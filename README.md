@@ -1,39 +1,21 @@
 # Build Your First Ionic App: Photo Gallery (Ionic Angular and Capacitor)
+# Aplicación Ionic + Angular
 
-Get started with Ionic by building a photo gallery app that runs on iOS, Android, and the web - with just one codebase. This is the complete project referenced in the ["Your First App: Angular" guide](https://ionicframework.com/docs/angular/your-first-app). Follow along to create a complete CRUD (create-read-update-delete) experience.
+**Objetivo de la aplicación**
+Aplicación móvil con sistema de autenticación conectado a una base de datos propia, diseñada para gestionar perfiles de usuario.
 
-Powered by [Ionic Angular](https://ionicframework.com/docs/angular/overview) (web app) and [Capacitor](https://capacitor.ionicframework.com) (native app runtime).
+**Vistas Incluidas**
+* **Login:** Pantalla principal de acceso con validación de credenciales.
+* **Tab 1:** Interfaz principal tras el inicio de sesión.
+* **Tab 2:** Galería o sección secundaria.
+* **Tab 3:** Sección de configuración o vista adicional.
 
-## How It Works
+**Modelo Inicial de Datos**
+El proyecto incluye el modelo relacional exportado en `database.sql`, el cual es consumido por los scripts `db.php`, `login.php` y `usuarios.php` mediante el backend.
 
-After the user navigates to Tab 2 (Photos), they can tap/click on the camera button to open up the device's camera. After taking or selecting a photo, it's stored permanently into the device's filesystem. When the user reopens the app at a later time, the photo images are loaded from the filesystem and displayed again in the gallery. The user can tap on a photo to be presented with the option to remove the photo.
+## Evidencia de IA y Resolución de Errores
 
-## Feature Overview
-* App framework: [Angular](https://angular.io)
-* UI components: [Ionic Framework](https://ionicframework.com/docs/components)
-  * Camera button: [Floating Action Button (FAB)](https://ionicframework.com/docs/api/fab)
-  * Photo Gallery display: [Grid](https://ionicframework.com/docs/api/grid)
-  * Delete Photo dialog: [Action Sheet](https://ionicframework.com/docs/api/action-sheet) 
-* Native runtime: [Capacitor](https://capacitor.ionicframework.com)
-  * Taking photos: [Camera API](https://capacitor.ionicframework.com/docs/apis/camera)
-  * Writing photo to the filesystem: [Filesystem API](https://capacitor.ionicframework.com/docs/apis/filesystem)
-  * Storing photo gallery metadata: [Preferences API](https://capacitor.ionicframework.com/docs/apis/preferences)
-
-## Project Structure
-* Tab2 (Photos) (`src/app/tab2/`): Photo Gallery UI and basic logic.
-* PhotoService (`src/app/services/photo.service.ts`): Logic encapsulating Capacitor APIs, including Camera, Filesystem, and Preferences.
-
-## How to Run
-
-> [!TIP]
-> It's highly recommended to follow along with the [tutorial guide](https://ionicframework.com/docs/angular/your-first-app), which goes into more depth, but this is the fastest way to run the app.
-
-> [!IMPORTANT]
-> Requires Node `^22.22.3 || ^24.15.0 || >=26.0.0` (Angular 22).
-
-1) Install the Ionic CLI (if you haven't already): `npm install -g @ionic/cli`
-2) Clone the repository: `git clone https://github.com/ionic-team/tutorial-photo-gallery-angular`
-3) Navigate to the project directory: `cd tutorial-photo-gallery-angular`
-4) Install the project dependencies: `npm install`
-5) Run the app in your browser: `ionic serve`
-6) Run the app on iOS or Android: Follow the [Capacitor Workflow](https://capacitorjs.com/docs/basics/workflow) guide for instructions on building and running the app on a native platform.
+| Prompt Utilizado | Código Generado por IA | Decisión y Explicación del Error |
+| :--- | :--- | :--- |
+| *"Requiero que para mi aplicacion ionic angular ngmodules, me migres la vista de tab1page hacia la de 'login', [...] agregalo a mi aap routes; requiero tambien una API de php que conecte el login mediante AXIOS y asu vez dame el SQL de las tablas"* | Componente `login.page.ts`, actualización de `app.routes.ts`, scripts PHP y archivo `database.sql`. | **Modificado:** La IA proporcionó la estructura base. Adapté el código para usar los módulos HTTP nativos de Angular en lugar de Axios y configuré los datos de conexión local en el PHP. |
+| *"Tengo un proyecto de ionic angular template my first app, requiero convertir el html,css y js a versiones compatibles siendo: [Código HAML, SCSS y animaciones jQuery]. Estos irían en el componente de Tab1Page"* | Traducción del código HAML a etiquetas de Ionic, SCSS y lógica TypeScript con variables de estado. | **Modificado con corrección de errores:** La IA generó el código, pero **la terminal marcó un error de compilación** porque la vista HTML utilizaba directivas como `[(ngModel)]` y `[ngClass]` sin que la IA importara los módulos necesarios en el componente Standalone. **Solución:** Arreglé el código importando manualmente `FormsModule` y `CommonModule` desde `@angular/forms` y `@angular/common` en el archivo TypeScript para que el proyecto pudiera desplegarse correctamente. |
